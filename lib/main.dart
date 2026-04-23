@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:z_money/core/theme/dark_theme.dart';
+import 'package:z_money/core/theme/light_theme.dart';
+import 'package:z_money/core/theme/theme_provider.dart';
+
 import 'package:z_money/main_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: LightTheme.theme,
+      darkTheme: DarkTheme.theme,
+      themeMode: themeMode,
       home: const MainView(),
     );
   }

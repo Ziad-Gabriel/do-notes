@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:z_money/features/todo/data/nav_task_list.dart';
 
-class MainAppNavigationBar extends StatelessWidget {
+class MainAppNavigationBar extends ConsumerWidget {
   final int selectedIndex;
   final Function(int) onTap;
   const MainAppNavigationBar({
@@ -10,19 +12,52 @@ class MainAppNavigationBar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final taskListIndex = ref.watch(taskListProvider.notifier);
     return BottomAppBar(
-      height: 60,
-      // notchMargin: 8,
-      shape: const CircularNotchedRectangle(),
-      color: Colors.amber,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.list)),
-          SizedBox(width: 40),
-          IconButton(onPressed: () {}, icon: Icon(Icons.sticky_note_2_rounded)),
-        ],
+      clipBehavior: Clip.antiAlias,
+      height: 80,
+      notchMargin: 6.0,
+      shape: CircularNotchedRectangle(),
+      color: Colors.transparent,
+      elevation: 0,
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface.withAlpha(235),
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: const Color.fromARGB(154, 106, 106, 106),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () {
+                if (selectedIndex != 0) {
+                  onTap(0);
+                }
+              },
+              icon: Icon(Icons.checklist_rounded),
+            ),
+            SizedBox(width: 48),
+            IconButton(
+              onPressed: () {
+                if (selectedIndex != 1) {
+                  onTap(1);
+                }
+                taskListIndex.setNewIndex(0);
+              },
+              icon: Icon(Icons.sticky_note_2_rounded),
+            ),
+          ],
+        ),
       ),
     );
   }

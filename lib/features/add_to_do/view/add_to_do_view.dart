@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:z_money/features/add_to_do/widgets/text_fields/description_text_field.dart';
-import 'package:z_money/features/add_to_do/widgets/text_fields/title_text_field.dart';
+
+import 'package:do_note/features/add_to_do/widgets/text_fields/description_text_field.dart';
+import 'package:do_note/features/add_to_do/widgets/text_fields/title_text_field.dart';
 
 class AddToDoView extends StatelessWidget {
   const AddToDoView({super.key});

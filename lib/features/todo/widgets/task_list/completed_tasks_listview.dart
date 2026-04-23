@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:z_money/core/utils/selected_date_state.dart';
 
-import 'package:z_money/features/todo/data/tasks_data.dart';
-import 'package:z_money/features/todo/widgets/task_list/content/completed_box.dart';
-import 'package:z_money/features/todo/widgets/task_list/content/task_description.dart';
-import 'package:z_money/features/todo/widgets/task_list/content/task_end_date.dart';
-import 'package:z_money/features/todo/widgets/task_list/content/task_title.dart';
+import 'package:do_note/core/utils/selected_date_state.dart';
+import 'package:do_note/features/todo/data/tasks_data.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/completed_box.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/task_description.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/task_end_date.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/task_title.dart';
 
 class CompletedTasksListview extends ConsumerStatefulWidget {
   // final DateTime selectedDate;

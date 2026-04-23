@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:z_money/features/add_to_do/view/add_to_do_view.dart';
+
+import 'package:do_note/features/add_to_do/view/add_to_do_view.dart';
 
 Widget mainFloatingActionButton(BuildContext context) {
   return SpeedDial(

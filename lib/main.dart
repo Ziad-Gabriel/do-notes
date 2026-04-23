@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:z_money/core/theme/dark_theme.dart';
-import 'package:z_money/core/theme/light_theme.dart';
-import 'package:z_money/core/theme/theme_provider.dart';
 
-import 'package:z_money/main_view.dart';
+import 'package:do_note/core/theme/dark_theme.dart';
+import 'package:do_note/core/theme/light_theme.dart';
+import 'package:do_note/core/theme/theme_provider.dart';
+import 'package:do_note/main_view.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));

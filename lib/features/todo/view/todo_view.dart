@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:z_money/features/todo/data/nav_task_list.dart';
 
-import 'package:z_money/features/todo/widgets/date_selection.dart';
-import 'package:z_money/features/todo/widgets/nav_top_bar/nav_top_bar_container.dart';
-import 'package:z_money/features/todo/widgets/task_list/completed_tasks_listview.dart';
-import 'package:z_money/features/todo/widgets/task_list/tasks_listview.dart';
+import 'package:do_note/features/todo/data/nav_task_list.dart';
+import 'package:do_note/features/todo/widgets/date_selection.dart';
+import 'package:do_note/features/todo/widgets/nav_top_bar/nav_top_bar_container.dart';
+import 'package:do_note/features/todo/widgets/task_list/completed_tasks_listview.dart';
+import 'package:do_note/features/todo/widgets/task_list/tasks_listview.dart';
 
 class ToDoView extends ConsumerStatefulWidget {
   const ToDoView({super.key});

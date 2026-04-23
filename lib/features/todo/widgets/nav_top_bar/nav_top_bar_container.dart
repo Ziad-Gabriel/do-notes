@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:z_money/features/todo/data/nav_task_list.dart';
 
-import 'package:z_money/features/todo/widgets/nav_top_bar/content/nav_top_bar_button.dart';
+import 'package:do_note/features/todo/data/nav_task_list.dart';
+import 'package:do_note/features/todo/widgets/nav_top_bar/content/nav_top_bar_button.dart';
 
 class NavTopBarContainer extends ConsumerStatefulWidget {
   final PageController controller;

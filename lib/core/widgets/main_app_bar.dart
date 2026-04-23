@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:z_money/core/theme/theme_provider.dart';
+import 'package:do_note/core/theme/theme_provider.dart';
 
 AppBar mainAppBar(String title, BuildContext context, WidgetRef ref) {
   final themeNotifier = ref.read(themeProvider.notifier);

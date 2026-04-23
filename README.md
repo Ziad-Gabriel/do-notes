@@ -35,5 +35,5 @@ Prerequisites:
 
 ### 📁 Project Structure
 lib/
-    **core/**          # Constants, themes, shared utilities and shared widgets
-    **features/** # UI components, screens, and state management
+    -**core/**          # Constants, themes, shared utilities and shared widgets
+    -**features/** # UI components, screens, and state management

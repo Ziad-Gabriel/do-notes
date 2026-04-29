@@ -1,32 +1,72 @@
+import 'package:do_note/features/add_to_do/widgets/buttons/cancel/cancel_button.dart';
+import 'package:do_note/features/add_to_do/widgets/buttons/choose_date/choose_date.dart';
+import 'package:do_note/features/add_to_do/widgets/buttons/choose_time/choose_time.dart';
+import 'package:do_note/features/add_to_do/widgets/buttons/done/done_button.dart';
+import 'package:do_note/features/add_to_do/widgets/task_priority/priority.dart';
+import 'package:do_note/features/add_to_do/widgets/text_fields/description_text_field/description_text_field.dart';
+import 'package:do_note/features/add_to_do/widgets/text_fields/title_text_field/title_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import 'package:do_note/features/add_to_do/widgets/text_fields/description_text_field.dart';
-import 'package:do_note/features/add_to_do/widgets/text_fields/title_text_field.dart';
-
-class AddToDoView extends StatelessWidget {
+class AddToDoView extends StatefulWidget {
   const AddToDoView({super.key});
 
   @override
+  State<AddToDoView> createState() => _AddToDoViewState();
+}
+
+class _AddToDoViewState extends State<AddToDoView> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(
-          'Add ToDo',
-          style: GoogleFonts.viga(fontSize: 26, fontWeight: FontWeight.w600),
-        ),
+        title: Text('Add ToDo', style: Theme.of(context).textTheme.titleLarge),
         backgroundColor: Theme.of(context).colorScheme.primary,
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const TitleTextField(),
-            SizedBox(height: 16),
-            DescriptionTextField(),
-          ],
+      body: Container(
+        color: Theme.of(context).colorScheme.primary,
+        child: TweenAnimationBuilder(
+          tween: Tween<Offset>(
+            begin: const Offset(0, 200),
+            end: const Offset(0, 0),
+          ),
+          duration: Duration(milliseconds: 500),
+          builder: (context, offset, child) {
+            return Transform.translate(offset: offset, child: child);
+          },
+          child: Container(
+            margin: EdgeInsets.only(top: 10),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+                vertical: 16,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TitleTextField(),
+                  DescriptionTextField(),
+                  ChooseDate(),
+                  ChooseTime(),
+                  TaskPriority(),
+                  SizedBox(height: 25),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [CancelButton(), DoneButton()],
+                  ),
+                  SizedBox(height: 20),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

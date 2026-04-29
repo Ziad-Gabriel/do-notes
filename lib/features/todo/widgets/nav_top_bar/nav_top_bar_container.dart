@@ -21,9 +21,8 @@ class _NavTopBarContainerState extends ConsumerState<NavTopBarContainer> {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        // color: Colors.white,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(30),
-        boxShadow: [BoxShadow(color: const Color.fromARGB(255, 127, 127, 127))],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

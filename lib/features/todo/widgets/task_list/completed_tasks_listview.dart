@@ -3,17 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:do_note/core/utils/selected_date_state.dart';
 import 'package:do_note/features/todo/data/tasks_data.dart';
-import 'package:do_note/features/todo/widgets/task_list/content/completed_box.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_description.dart';
-import 'package:do_note/features/todo/widgets/task_list/content/task_end_date.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_title.dart';
 
 class CompletedTasksListview extends ConsumerStatefulWidget {
-  // final DateTime selectedDate;
-  const CompletedTasksListview({
-    super.key,
-    // required this.selectedDate
-  });
+  const CompletedTasksListview({super.key});
 
   @override
   ConsumerState<CompletedTasksListview> createState() =>
@@ -36,38 +30,44 @@ class _CompletedTasksListviewState
       itemBuilder: (context, index) {
         final task = filteredTasks[index];
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(bottom: 2),
           child: IntrinsicHeight(
             child: Card(
-              elevation: 8,
-              child: Container(
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(8),
-                ),
+              elevation: 2,
+              color: Colors.green,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 6.0),
+                child: Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
 
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              TaskTitle(title: task.title),
-                              TaskEndDate(endDate: task.endDate),
-                              TaskDescription(description: task.description),
-                            ],
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TaskTitle(title: task.title),
+
+                                TaskDescription(description: task.description),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      CompletedBox(isCompleted: task.isCompleted),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

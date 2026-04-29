@@ -21,7 +21,7 @@ class _DateSelectionState extends ConsumerState<DateSelection> {
         DateTime.now(),
         height: 120,
         width: 100,
-        selectionColor: Theme.of(context).colorScheme.primaryContainer,
+        selectionColor: Theme.of(context).colorScheme.primary,
         initialSelectedDate: DateTime.now(),
         dayTextStyle: TextStyle(
           fontSize: 14,

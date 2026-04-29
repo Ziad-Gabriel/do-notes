@@ -18,6 +18,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeProvider);
     return MaterialApp(
+      title: 'Do Note',
       debugShowCheckedModeBanner: false,
       theme: LightTheme.theme,
       darkTheme: DarkTheme.theme,

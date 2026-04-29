@@ -42,10 +42,13 @@ class _ToDoViewState extends ConsumerState<ToDoView> {
           child: NavTopBarContainer(controller: controller),
         ),
         Expanded(
-          child: PageView(
-            controller: controller,
-            children: listview,
-            onPageChanged: (value) => taskListView.setNewIndex(value),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8, top: 4),
+            child: PageView(
+              controller: controller,
+              children: listview,
+              onPageChanged: (value) => taskListView.setNewIndex(value),
+            ),
           ),
         ),
       ],

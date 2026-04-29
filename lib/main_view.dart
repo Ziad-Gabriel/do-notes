@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:do_note/core/widgets/floating_button.dart';
-import 'package:do_note/core/widgets/main_app_bar.dart';
-import 'package:do_note/core/widgets/main_app_navigation_bar.dart';
+import 'package:do_note/core/widgets/buttons/floating_button.dart';
+import 'package:do_note/core/widgets/app_bars/main_app_bar.dart';
+import 'package:do_note/core/widgets/app_bars/main_app_navigation_bar.dart';
 import 'package:do_note/features/note/view/note_view.dart';
 import 'package:do_note/features/todo/view/todo_view.dart';
 

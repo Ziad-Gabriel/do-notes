@@ -22,7 +22,7 @@ class NavTopBarButton extends StatelessWidget {
     return Container(
       height: double.infinity,
       decoration: BoxDecoration(
-        color: color.withAlpha(100),
+        color: color.withAlpha(200),
         borderRadius: borderRadius,
         border: Border.all(color: color, width: 2),
       ),

@@ -36,9 +36,8 @@ class _ToDoViewState extends ConsumerState<ToDoView> {
     return Column(
       children: [
         DateSelection(),
-        Divider(),
         Padding(
-          padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0),
           child: NavTopBarContainer(controller: controller),
         ),
         Expanded(

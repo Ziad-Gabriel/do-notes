@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:do_note/features/add_to_do/state/priority_index.dart';
 import 'package:do_note/features/add_to_do/widgets/buttons/cancel/cancel_button.dart';
 import 'package:do_note/features/add_to_do/widgets/buttons/choose_date/choose_date.dart';
 import 'package:do_note/features/add_to_do/widgets/buttons/choose_time/choose_time.dart';
@@ -5,18 +9,30 @@ import 'package:do_note/features/add_to_do/widgets/buttons/done/done_button.dart
 import 'package:do_note/features/add_to_do/widgets/task_priority/priority.dart';
 import 'package:do_note/features/add_to_do/widgets/text_fields/description_text_field/description_text_field.dart';
 import 'package:do_note/features/add_to_do/widgets/text_fields/title_text_field/title_text_field.dart';
-import 'package:flutter/material.dart';
 
-class AddToDoView extends StatefulWidget {
+class AddToDoView extends ConsumerStatefulWidget {
   const AddToDoView({super.key});
 
   @override
-  State<AddToDoView> createState() => _AddToDoViewState();
+  ConsumerState<AddToDoView> createState() => _AddToDoViewState();
 }
 
-class _AddToDoViewState extends State<AddToDoView> {
+class _AddToDoViewState extends ConsumerState<AddToDoView> {
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController desController = TextEditingController();
+  DateTime? date;
+  TimeOfDay? time;
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    desController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final priority = ref.watch(priorityProvider);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -52,15 +68,37 @@ class _AddToDoViewState extends State<AddToDoView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TitleTextField(),
-                  DescriptionTextField(),
-                  ChooseDate(),
-                  ChooseTime(),
+                  TitleTextField(titleController: titleController),
+                  DescriptionTextField(desController: desController),
+                  ChooseDate(
+                    selectedDate: date,
+                    onDatePicked: (selectedDate) {
+                      setState(() {
+                        date = selectedDate;
+                      });
+                    },
+                  ),
+                  ChooseTime(
+                    selectedTime: time,
+                    onTimePicked: (selectedTime) {
+                      setState(() {
+                        time = selectedTime;
+                      });
+                    },
+                  ),
                   TaskPriority(),
                   SizedBox(height: 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [CancelButton(), DoneButton()],
+                    children: [
+                      CancelButton(),
+                      DoneButton(
+                        title: titleController,
+                        description: desController,
+                        // date: DateTime(date.year),
+                        priority: priority,
+                      ),
+                    ],
                   ),
                   SizedBox(height: 20),
                 ],

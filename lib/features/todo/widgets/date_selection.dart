@@ -14,36 +14,40 @@ class DateSelection extends ConsumerStatefulWidget {
 class _DateSelectionState extends ConsumerState<DateSelection> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     final selectedDate = ref.watch(selectedDateProvider.notifier);
-    return Padding(
-      padding: const EdgeInsets.only(left: 8.0, top: 8),
-      child: DatePicker(
-        DateTime.now(),
-        height: 120,
-        width: 100,
-        selectionColor: Theme.of(context).colorScheme.primary,
-        initialSelectedDate: DateTime.now(),
-        dayTextStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Colors.grey,
-        ),
-        dateTextStyle: TextStyle(
-          fontSize: 26,
-          fontWeight: FontWeight.w700,
-          color: Colors.grey,
-        ),
-        monthTextStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Colors.grey,
-        ),
+    return Container(
+      color: colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: DatePicker(
+          DateTime.now(),
+          height: 120,
+          width: 100,
+          selectionColor: const Color.fromARGB(255, 214, 214, 214),
+          selectedTextColor: colorScheme.onPrimary,
+          initialSelectedDate: DateTime.now(),
+          dayTextStyle: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: const Color.fromARGB(255, 79, 79, 79),
+          ),
+          dateTextStyle: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w700,
+            color: const Color.fromARGB(255, 79, 79, 79),
+          ),
+          monthTextStyle: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: const Color.fromARGB(255, 79, 79, 79),
+          ),
 
-        onDateChange: (date) {
-          setState(() {
+          onDateChange: (date) {
             selectedDate.updateSelectedDate(date);
-          });
-        },
+          },
+        ),
       ),
     );
   }

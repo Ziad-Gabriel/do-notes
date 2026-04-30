@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DescriptionTextField extends StatefulWidget {
-  const DescriptionTextField({super.key});
+  final TextEditingController desController;
+  const DescriptionTextField({super.key, required this.desController});
 
   @override
   State<DescriptionTextField> createState() => _DescriptionTextFieldState();
@@ -38,8 +39,9 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      controller: widget.desController,
                       maxLines: 3,
                       decoration: InputDecoration(
                         border: InputBorder.none,

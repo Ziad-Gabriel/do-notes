@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class DoneButton extends StatelessWidget {
-  const DoneButton({super.key});
+  final TextEditingController title;
+  final TextEditingController? description;
+  // final DateTime? date;
+  final int priority;
+
+  const DoneButton({
+    super.key,
+    required this.title,
+    required this.description,
+    // required this.date,
+    required this.priority,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -12,6 +12,7 @@ AppBar mainAppBar(String title, BuildContext context, WidgetRef ref) {
           MediaQuery.of(context).platformBrightness == Brightness.dark);
   return AppBar(
     title: Text(title, style: Theme.of(context).textTheme.titleLarge),
+    backgroundColor: Theme.of(context).colorScheme.primary,
     actions: [
       IconButton(
         onPressed: () {

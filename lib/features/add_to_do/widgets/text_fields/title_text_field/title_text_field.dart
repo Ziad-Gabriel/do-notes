@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TitleTextField extends StatefulWidget {
-  const TitleTextField({super.key});
+
+  final TextEditingController titleController;
+  const TitleTextField({super.key,required this.titleController});
 
   @override
   State<TitleTextField> createState() => _TitleTextFieldState();
@@ -41,6 +43,7 @@ class _TitleTextFieldState extends State<TitleTextField> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: TextField(
+                      controller: widget.titleController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         enabledBorder: InputBorder.none,

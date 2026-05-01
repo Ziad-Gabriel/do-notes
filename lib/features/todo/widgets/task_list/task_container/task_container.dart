@@ -1,37 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:do_note/features/todo/data/tasks_data.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_description.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/task_end_date.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_title.dart';
+import 'package:flutter/material.dart';
 
-class CompletedTasksListview extends ConsumerStatefulWidget {
-  const CompletedTasksListview({super.key});
+class TaskContainer extends StatelessWidget {
 
-  @override
-  ConsumerState<CompletedTasksListview> createState() =>
-      _CompletedTasksListviewState();
-}
+  final TaskData task;
+  const TaskContainer({super.key,required this.task});
 
-class _CompletedTasksListviewState
-    extends ConsumerState<CompletedTasksListview> {
   @override
   Widget build(BuildContext context) {
-    final allTasks = ref.watch(completedTasksDataProvider);
-
-    return ListView.builder(
-      itemCount: allTasks.length,
-      itemBuilder: (context, index) {
-        final task = allTasks[index];
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 2),
-          child: IntrinsicHeight(
-            child: Card(
-              elevation: 2,
-              color: Colors.green,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 6.0),
-                child: Container(
+    return Container(
                   clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.primaryContainer,
@@ -54,8 +34,9 @@ class _CompletedTasksListviewState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TaskTitle(title: task.title),
-
+                                // SizedBox(height: 4),
                                 TaskDescription(description: task.description),
+                                TaskEndDate(endDate: task.endDate),
                               ],
                             ),
                           ),
@@ -63,12 +44,6 @@ class _CompletedTasksListviewState
                       ],
                     ),
                   ),
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
+                );
   }
 }

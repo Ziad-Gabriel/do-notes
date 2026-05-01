@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:do_note/core/widgets/buttons/floating_button.dart';
 import 'package:do_note/core/widgets/app_bars/main_app_bar.dart';
-import 'package:do_note/core/widgets/app_bars/main_app_navigation_bar.dart';
-import 'package:do_note/features/note/view/note_view.dart';
 import 'package:do_note/features/todo/view/todo_view.dart';
 
 class MainView extends ConsumerStatefulWidget {
@@ -15,26 +13,14 @@ class MainView extends ConsumerStatefulWidget {
 }
 
 class _MainViewState extends ConsumerState<MainView> {
-  int _currentIndex = 0;
-
-  final List<Widget> _views = [const ToDoView(), const NoteView()];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: mainAppBar(_currentIndex == 0 ? 'ToDo' : 'Note', context, ref),
-      body: _views[_currentIndex],
+      appBar: mainAppBar('ToDo', context, ref),
+      body: ToDoView(),
       floatingActionButton: mainFloatingActionButton(context),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: MainAppNavigationBar(
-        selectedIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

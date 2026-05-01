@@ -26,7 +26,7 @@ class _DateSelectionState extends ConsumerState<DateSelection> {
           height: 120,
           width: 100,
           selectionColor: const Color.fromARGB(255, 214, 214, 214),
-          selectedTextColor: colorScheme.onPrimary,
+          selectedTextColor: Colors.black,
           initialSelectedDate: DateTime.now(),
           dayTextStyle: TextStyle(
             fontSize: 14,

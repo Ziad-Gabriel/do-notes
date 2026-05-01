@@ -11,7 +11,9 @@ AppBar mainAppBar(String title, BuildContext context, WidgetRef ref) {
       (themeMode == ThemeMode.system &&
           MediaQuery.of(context).platformBrightness == Brightness.dark);
   return AppBar(
-    title: Text(title, style: Theme.of(context).textTheme.titleLarge),
+    title: Hero(
+      tag: 'app bar title',
+      child: Text(title, style: Theme.of(context).textTheme.titleLarge)),
     backgroundColor: Theme.of(context).colorScheme.primary,
     actions: [
       IconButton(

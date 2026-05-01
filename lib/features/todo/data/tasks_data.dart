@@ -4,13 +4,11 @@ class TaskData {
   final String title;
   final String description;
   final DateTime endDate;
- final bool isCompleted;
   final int priority;
   TaskData({
     required this.title,
     required this.description,
     required this.endDate,
-    required this.isCompleted,
     required this.priority,
   });
 }
@@ -47,7 +45,6 @@ List<TaskData> tasksList = [
     title: 'Task 1',
     description: 'the task 1 description',
     endDate: DateTime.now(),
-    isCompleted: false,
     priority: 0,
   ),
   TaskData(
@@ -55,35 +52,30 @@ List<TaskData> tasksList = [
     description:
         'the task 1 desiav uiu dubngfngfv  js dcv u uid c sac ou iodcnsqoi chi udsandfkbnufvbini fn  bubububviondivb dubu uivuhvivnsiu obuocbi vusb juiv sbj idyv scihasuig duob uvci iv sgcuisbuvcyvsucbusvcvskjbcui dbuiv cusjsacoubs hisbcuisvycc sbhnjcz ffbd bu',
     endDate: DateTime.now(),
-    isCompleted: false,
     priority: 1,
   ),
   TaskData(
     title: 'Task 3',
     description: 'the task 1 description',
     endDate: DateTime.now().add(Duration(days: 1)),
-    isCompleted: false,
     priority: 2,
   ),
   TaskData(
     title: 'Task 4',
     description: 'the task 1 description',
     endDate: DateTime.now().add(Duration(days: 1)),
-    isCompleted: false,
     priority: 0,
   ),
   TaskData(
     title: 'Task 5',
     description: 'the task 1 description',
     endDate: DateTime.now().add(Duration(days: 1)),
-    isCompleted: false,
     priority: 0,
   ),
   TaskData(
     title: 'Task 6',
     description: 'the task 1 description',
     endDate: DateTime.now().add(Duration(days: 2)),
-    isCompleted: false,
     priority: 0,
   ),
 ];
@@ -93,28 +85,24 @@ List<TaskData> completedTasksList = [
     title: 'Task 11',
     description: 'the task 1 description',
     endDate: DateTime.now().add(Duration(days: 0)),
-    isCompleted: true,
     priority: 2
   ),
   TaskData(
     title: 'Task 14',
     description: 'the task 1 description',
     endDate: DateTime.now().add(Duration(days: 0)),
-    isCompleted: true,
     priority: 0
   ),
   TaskData(
     title: 'Task 12',
     description: 'the task 1 description',
     endDate: DateTime.now().add(Duration(days: 1)),
-    isCompleted: true,
     priority: 0,
   ),
   TaskData(
     title: 'Task 13',
     description: 'the task 1 description',
     endDate: DateTime.now().add(Duration(days: 2)),
-    isCompleted: true,
     priority: 0,
   ),
 ];

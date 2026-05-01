@@ -36,7 +36,10 @@ class _AddToDoViewState extends ConsumerState<AddToDoView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Add ToDo', style: Theme.of(context).textTheme.titleLarge),
+        title: Hero(
+          tag: 'app bar title',
+          child: Text('ToDo', style: Theme.of(context).textTheme.titleLarge),
+        ),
         backgroundColor: Theme.of(context).colorScheme.primary,
         centerTitle: true,
       ),
@@ -95,7 +98,8 @@ class _AddToDoViewState extends ConsumerState<AddToDoView> {
                       DoneButton(
                         title: titleController,
                         description: desController,
-                        // date: DateTime(date.year),
+                        date: date,
+                        time: time,
                         priority: priority,
                       ),
                     ],

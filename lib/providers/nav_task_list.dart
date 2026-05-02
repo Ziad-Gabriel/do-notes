@@ -1,4 +1,4 @@
-import 'package:flutter_riverpod/legacy.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 StateNotifierProvider<TasksWidgetNotifier, int> taskListProvider =
     StateNotifierProvider<TasksWidgetNotifier, int>(

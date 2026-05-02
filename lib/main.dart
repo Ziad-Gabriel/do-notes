@@ -1,3 +1,4 @@
+import 'package:do_note/services/database_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,8 +7,14 @@ import 'package:do_note/core/theme/light_theme.dart';
 import 'package:do_note/core/theme/theme_provider.dart';
 import 'package:do_note/main_view.dart';
 
-void main() {
+void main() async{
+  await _setup();
   runApp(const ProviderScope(child: MyApp()));
+}
+
+Future<void> _setup() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseServices.setup();
 }
 
 class MyApp extends ConsumerWidget {

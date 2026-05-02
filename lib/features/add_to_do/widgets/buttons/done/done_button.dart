@@ -1,4 +1,6 @@
-import 'package:do_note/features/todo/data/tasks_data.dart';
+// import 'package:do_note/features/todo/data/tasks_data.dart';
+import 'package:do_note/model/data/tasks_data.dart';
+import 'package:do_note/services/database_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,9 +25,9 @@ class DoneButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final addToDoTask = ref.read(tasksDataProvider.notifier).addTask;
+    // final addToDoTask = ref.read(tasksDataProvider.notifier).addTask;
     return ElevatedButton(
-      onPressed: () {
+      onPressed: () async {
         if (!titleValid(title: title.text) && date == null) {
           showDialog(
             context: context,
@@ -48,30 +50,36 @@ class DoneButton extends ConsumerWidget {
           );
         } else {
           if (time == null) {
-            addToDoTask(
-              TaskData(
-                title: title.text,
-                description: description.text,
-                endDate: DateTime(date!.year, date!.month, date!.day),
-                priority: priority,
-              ),
+            TaskData newTaskData = TaskData();
+            newTaskData = TaskData().copyWith(
+              title: title.text,
+              description: description.text,
+              endDate: DateTime(date!.year, date!.month, date!.day),
+              priority: priority,
             );
+            await DatabaseServices.db.writeTxn(() async {
+              await DatabaseServices.db.taskDatas.put(newTaskData);
+            });
           } else {
-            addToDoTask(
-              TaskData(
-                title: title.text,
-                description: description.text,
-                endDate: DateTime(
-                  date!.year,
-                  date!.month,
-                  date!.day,
-                  time!.hour,
-                  time!.hour,
-                ),
-                priority: priority,
+            TaskData newTaskData = TaskData();
+            newTaskData = TaskData().copyWith(
+              title: title.text,
+              description: description.text,
+              endDate: DateTime(
+                date!.year,
+                date!.month,
+                date!.day,
+                time!.hour,
+                time!.minute,
               ),
+              priority: priority,
             );
+            await DatabaseServices.db.writeTxn(() async {
+              await DatabaseServices.db.taskDatas.put(newTaskData);
+            });
           }
+          if (!context.mounted) return;
+
           Navigator.pop(context);
         }
       },

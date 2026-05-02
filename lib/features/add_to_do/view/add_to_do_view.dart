@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:do_note/features/add_to_do/state/priority_index.dart';
+import 'package:do_note/providers/priority_index.dart';
 import 'package:do_note/features/add_to_do/widgets/buttons/cancel/cancel_button.dart';
 import 'package:do_note/features/add_to_do/widgets/buttons/choose_date/choose_date.dart';
 import 'package:do_note/features/add_to_do/widgets/buttons/choose_time/choose_time.dart';

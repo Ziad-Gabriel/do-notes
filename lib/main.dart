@@ -1,3 +1,4 @@
+import 'package:do_note/providers/tasks_provider.dart';
 import 'package:do_note/services/database_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,14 +8,15 @@ import 'package:do_note/core/theme/light_theme.dart';
 import 'package:do_note/core/theme/theme_provider.dart';
 import 'package:do_note/main_view.dart';
 
-void main() async{
-  await _setup();
-  runApp(const ProviderScope(child: MyApp()));
-}
-
-Future<void> _setup() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DatabaseServices.setup();
+  final isarInstance = await TasksDatabase.initialize();
+  runApp(
+    ProviderScope(
+      overrides: [isarProvider.overrideWithValue(isarInstance)],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {

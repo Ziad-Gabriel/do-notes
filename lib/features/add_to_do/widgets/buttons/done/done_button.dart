@@ -1,9 +1,8 @@
-// import 'package:do_note/features/todo/data/tasks_data.dart';
-import 'package:do_note/model/data/tasks_data.dart';
-import 'package:do_note/services/database_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:do_note/model/data/tasks_data.dart';
+import 'package:do_note/providers/tasks_provider.dart';
 import 'package:do_note/core/utils/validators/add_task/title_valid.dart';
 import 'package:do_note/core/widgets/alert_dialog/alert_dialog.dart';
 
@@ -25,7 +24,6 @@ class DoneButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final addToDoTask = ref.read(tasksDataProvider.notifier).addTask;
     return ElevatedButton(
       onPressed: () async {
         if (!titleValid(title: title.text) && date == null) {
@@ -49,35 +47,23 @@ class DoneButton extends ConsumerWidget {
                 customAlertDialog(context, message: 'Choose date'),
           );
         } else {
-          if (time == null) {
-            TaskData newTaskData = TaskData();
-            newTaskData = TaskData().copyWith(
-              title: title.text,
-              description: description.text,
-              endDate: DateTime(date!.year, date!.month, date!.day),
-              priority: priority,
-            );
-            await DatabaseServices.db.writeTxn(() async {
-              await DatabaseServices.db.taskDatas.put(newTaskData);
-            });
-          } else {
-            TaskData newTaskData = TaskData();
-            newTaskData = TaskData().copyWith(
-              title: title.text,
-              description: description.text,
-              endDate: DateTime(
-                date!.year,
-                date!.month,
-                date!.day,
-                time!.hour,
-                time!.minute,
-              ),
-              priority: priority,
-            );
-            await DatabaseServices.db.writeTxn(() async {
-              await DatabaseServices.db.taskDatas.put(newTaskData);
-            });
-          }
+
+        final finalDateTime = DateTime(
+          date!.year,
+          date!.month,
+          date!.day,
+          time?.hour ?? 0,
+          time?.minute ?? 0,
+        );
+
+        final newTask = TaskData()
+          ..title = title.text
+          ..description = description.text
+          ..endDate = finalDateTime
+          ..priority = priority;
+
+        await ref.read(tasksProvider.notifier).addTask(newTask);
+
           if (!context.mounted) return;
 
           Navigator.pop(context);

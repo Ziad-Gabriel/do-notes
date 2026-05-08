@@ -13,7 +13,7 @@ Widget mainFloatingActionButton(BuildContext context) {
       width: 50,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(30),
       ),
       child: Icon(
         Icons.add_outlined,

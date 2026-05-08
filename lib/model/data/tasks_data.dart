@@ -10,19 +10,5 @@ class TaskData {
   late String description;
   late DateTime endDate;
   late int priority;
-  final bool isCompleted=false;
-
-  TaskData copyWith({
-    String? title,
-    String? description,
-    DateTime? endDate,
-    int? priority,
-  }) {
-    return TaskData()
-      ..id = id
-      ..title = title!
-      ..description = description ?? ''
-      ..endDate = endDate!
-      ..priority = priority!;
-  }
+  bool isCompleted=false;
 }

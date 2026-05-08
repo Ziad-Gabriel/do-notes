@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:do_note/providers/nav_task_list.dart';
 
 class MainAppNavigationBar extends ConsumerWidget {
   final int selectedIndex;
@@ -14,7 +13,6 @@ class MainAppNavigationBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final taskListIndex = ref.watch(taskListProvider.notifier);
     return BottomAppBar(
       clipBehavior: Clip.antiAlias,
       height: 80,
@@ -59,7 +57,7 @@ class MainAppNavigationBar extends ConsumerWidget {
                       onTap(0);
                     }
                   },
-                  icon: Icon(Icons.checklist_rounded),
+                  icon: Icon(Icons.check_circle_outline_rounded),
                 ),
               ],
             ),
@@ -82,9 +80,8 @@ class MainAppNavigationBar extends ConsumerWidget {
                     if (selectedIndex != 1) {
                       onTap(1);
                     }
-                    taskListIndex.setNewIndex(0);
                   },
-                  icon: Icon(Icons.sticky_note_2_rounded),
+                  icon: Icon(Icons.check_circle_rounded),
                 ),
               ],
             ),

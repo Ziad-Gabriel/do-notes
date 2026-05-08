@@ -15,51 +15,62 @@ class TasksListView extends ConsumerStatefulWidget {
 class _TasksListViewState extends ConsumerState<TasksListView> {
   @override
   Widget build(BuildContext context) {
-    final allTasks = ref.watch(tasksStreamProvider);
+    final allTasks = ref.watch(tasksProvider);
     final selectedDate = ref.watch(selectedDateProvider);
 
     return allTasks.when(
-      data: (tasks) => ListView.builder(
-        itemCount: tasks.length,
-        itemBuilder: (context, index) {
-          final notCompletedTasks = tasks.where((task) {
-            return !task.isCompleted;
-          });
-          final filteredDateTasks = notCompletedTasks.where((task) {
-            if (DateTime.now().year == selectedDate.year &&
-                DateTime.now().month == selectedDate.month &&
-                DateTime.now().day == selectedDate.day) {
-              return task.endDate.year <= selectedDate.year &&
-                  task.endDate.month <= selectedDate.month &&
-                  task.endDate.day <= selectedDate.day;
-            } else {
-              return task.endDate.year == selectedDate.year &&
-                  task.endDate.month == selectedDate.month &&
-                  task.endDate.day == selectedDate.day;
-            }
-          }).toList();
-          final task = filteredDateTasks[index];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 2),
-            child: IntrinsicHeight(
-              child: Card(
-                elevation: 2,
-                color: task.priority == 0
-                    ? Colors.blue
-                    : task.priority == 1
-                    ? Colors.yellow
-                    : Colors.red,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 6.0),
-                  child: TaskContainer(task: task),
+      data: (tasks) {
+        final filteredDateTasks = tasks.where((task) {
+          if (task.isCompleted) return false;
+
+          bool isToday = DateUtils.isSameDay(DateTime.now(), selectedDate);
+          if (isToday) {
+            return task.endDate.isBefore(selectedDate) ||
+                DateUtils.isSameDay(task.endDate, selectedDate);
+          } else {
+            return DateUtils.isSameDay(task.endDate, selectedDate);
+          }
+        }).toList();
+
+        return Column(
+          children: [
+            Text('Tasks', style: Theme.of(context).textTheme.titleLarge),
+
+            if (filteredDateTasks.isEmpty)
+              const Expanded(
+                child: Center(child: Text("No tasks for this day")),
+              )
+            else
+              Expanded(
+                child: ListView.builder(
+                  itemCount: filteredDateTasks.length,
+                  itemBuilder: (context, index) {
+                    final task = filteredDateTasks[index];
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 2),
+                      child: IntrinsicHeight(
+                        child: Card(
+                          elevation: 2,
+                          color: task.priority == 0
+                              ? Colors.blue
+                              : task.priority == 1
+                              ? Colors.yellow
+                              : Colors.red,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 6.0),
+                            child: TaskContainer(task: task),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
-            ),
-          );
-        },
-      ),
-      loading: () => const CircularProgressIndicator(),
-      error: (e, st) => Text('Error: $e'),
+          ],
+        );
+      },
+      loading: () => const Scaffold(body: Center(child: CircularProgressIndicator())),
+error: (e, st) => Scaffold(body: Center(child: Text('Error: $e'))),
     );
   }
 }

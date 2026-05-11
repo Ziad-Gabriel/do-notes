@@ -33,8 +33,8 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, top: 8),
+               const Padding(
+                  padding:  EdgeInsets.only(left: 8.0, top: 8),
                   child: Icon(Icons.description_rounded),
                 ),
                 Expanded(

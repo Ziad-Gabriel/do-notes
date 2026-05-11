@@ -35,8 +35,8 @@ class _TitleTextFieldState extends State<TitleTextField> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
+               const Padding(
+                  padding:  EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
                   child: Icon(Icons.title),
                 ),
                 Expanded(

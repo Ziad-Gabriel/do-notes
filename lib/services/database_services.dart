@@ -46,12 +46,10 @@ class TasksDatabase {
     await isar.writeTxn(() async {
       await isar.taskDatas.delete(id);
     });
-    fetchTasks();
   }
 
   // Get tasks from the database
   Future<List<TaskData>> fetchTasks() async {
-    final tasks = await isar.taskDatas.where().findAll();
-    return tasks;
+    return await isar.taskDatas.where().findAll();
   }
 }

@@ -4,16 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:do_note/providers/selected_date_state.dart';
 
-class DateSelection extends ConsumerStatefulWidget {
+class DateSelection extends ConsumerWidget {
   const DateSelection({super.key});
 
   @override
-  ConsumerState<DateSelection> createState() => _DateSelectionState();
-}
-
-class _DateSelectionState extends ConsumerState<DateSelection> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final selectedDate = ref.watch(selectedDateProvider.notifier);
@@ -28,20 +23,20 @@ class _DateSelectionState extends ConsumerState<DateSelection> {
           selectionColor: const Color.fromARGB(255, 214, 214, 214),
           selectedTextColor: Colors.black,
           initialSelectedDate: DateTime.now(),
-          dayTextStyle: TextStyle(
+          dayTextStyle:const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: const Color.fromARGB(255, 79, 79, 79),
+            color:  Color.fromARGB(255, 79, 79, 79),
           ),
-          dateTextStyle: TextStyle(
+          dateTextStyle: const TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w700,
-            color: const Color.fromARGB(255, 79, 79, 79),
+            color:  Color.fromARGB(255, 79, 79, 79),
           ),
-          monthTextStyle: TextStyle(
+          monthTextStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: const Color.fromARGB(255, 79, 79, 79),
+            color:  Color.fromARGB(255, 79, 79, 79),
           ),
 
           onDateChange: (date) {

@@ -43,7 +43,7 @@ class _MainViewState extends ConsumerState<MainView> {
 
           controller.animateToPage(
             index,
-            duration: Duration(milliseconds: 250),
+            duration:const Duration(milliseconds: 250),
             curve: Curves.easeInOut,
           );
         },

@@ -1,3 +1,4 @@
+import 'package:do_note/providers/priority_index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -63,6 +64,7 @@ class DoneButton extends ConsumerWidget {
           ..priority = priority;
 
         await ref.read(tasksProvider.notifier).addTask(newTask);
+ref.read(priorityProvider.notifier).setPriority(1);
 
           if (!context.mounted) return;
 

@@ -21,7 +21,7 @@ class _ChooseTimeState extends State<ChooseTime> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 12),
+          padding:const EdgeInsets.only(left: 12),
           child: Text('Time', style: Theme.of(context).textTheme.bodyLarge),
         ),
         GestureDetector(
@@ -40,7 +40,7 @@ class _ChooseTimeState extends State<ChooseTime> {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.watch_later_outlined),
+                  const Icon(Icons.watch_later_outlined),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -51,7 +51,7 @@ class _ChooseTimeState extends State<ChooseTime> {
                       ),
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  const Icon(Icons.arrow_forward_ios_rounded),
                 ],
               ),
             ),

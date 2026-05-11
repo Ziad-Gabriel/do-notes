@@ -6,7 +6,7 @@ import 'package:do_note/core/constant/text/texts_styles.dart';
 class DarkTheme {
   static ThemeData get theme => ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: Color(0XFF0D0D0D),
+    scaffoldBackgroundColor:const Color(0XFF0D0D0D),
     colorScheme: DarkColorScheme.darkColorScheme,
     textTheme: TextsStyles().appTextTheme,
   );

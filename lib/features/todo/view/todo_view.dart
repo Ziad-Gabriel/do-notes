@@ -20,9 +20,7 @@ class ToDoView extends ConsumerStatefulWidget {
 class _ToDoViewState extends ConsumerState<ToDoView> {
 
 
-  final List<Widget> listview = [ 
-    TasksListView(), CompletedTasksListview()
-  ];
+  final listview = const [TasksListView(), CompletedTasksListview()];
 
   
 
@@ -34,7 +32,7 @@ class _ToDoViewState extends ConsumerState<ToDoView> {
     
     return Column(
       children: [
-        DateSelection(),
+       const DateSelection(),
         
         Expanded(
           child:Padding(

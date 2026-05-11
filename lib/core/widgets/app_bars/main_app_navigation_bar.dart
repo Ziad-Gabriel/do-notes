@@ -17,7 +17,7 @@ class MainAppNavigationBar extends ConsumerWidget {
       clipBehavior: Clip.antiAlias,
       height: 80,
       notchMargin: 6.0,
-      shape: CircularNotchedRectangle(),
+      shape:const CircularNotchedRectangle(),
       color: Colors.transparent,
       elevation: 0,
       child: Container(
@@ -25,11 +25,11 @@ class MainAppNavigationBar extends ConsumerWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface.withAlpha(235),
           borderRadius: BorderRadius.circular(16),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
-              color: const Color.fromARGB(154, 106, 106, 106),
+              color:  Color.fromARGB(154, 106, 106, 106),
               blurRadius: 10,
-              offset: const Offset(0, 5),
+              offset:  Offset(0, 5),
             ),
           ],
         ),
@@ -41,7 +41,7 @@ class MainAppNavigationBar extends ConsumerWidget {
               alignment: AlignmentDirectional.center,
               children: [
                 AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
+                  duration:const Duration(milliseconds: 300),
                   height: selectedIndex == 0 ? 30 : 20,
                   width: selectedIndex == 0 ? 70 : 40,
                   decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class MainAppNavigationBar extends ConsumerWidget {
                       onTap(0);
                     }
                   },
-                  icon: Icon(Icons.check_circle_outline_rounded),
+                  icon:const Icon(Icons.check_circle_outline_rounded),
                 ),
               ],
             ),
@@ -65,7 +65,7 @@ class MainAppNavigationBar extends ConsumerWidget {
               alignment: AlignmentDirectional.center,
               children: [
                 AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
+                  duration:const Duration(milliseconds: 300),
                   height: selectedIndex == 1 ? 30 : 20,
                   width: selectedIndex == 1 ? 70 : 40,
                   decoration: BoxDecoration(
@@ -81,7 +81,7 @@ class MainAppNavigationBar extends ConsumerWidget {
                       onTap(1);
                     }
                   },
-                  icon: Icon(Icons.check_circle_rounded),
+                  icon:const Icon(Icons.check_circle_rounded),
                 ),
               ],
             ),

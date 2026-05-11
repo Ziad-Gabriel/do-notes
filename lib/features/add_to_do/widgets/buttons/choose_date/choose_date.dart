@@ -23,7 +23,7 @@ class _ChooseDateState extends State<ChooseDate> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 12),
+          padding:const EdgeInsets.only(left: 12),
           child: Text('Date', style: Theme.of(context).textTheme.bodyLarge),
         ),
         GestureDetector(
@@ -42,7 +42,7 @@ class _ChooseDateState extends State<ChooseDate> {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.edit_calendar_rounded),
+                  const Icon(Icons.edit_calendar_rounded),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -53,7 +53,7 @@ class _ChooseDateState extends State<ChooseDate> {
                       ),
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  const Icon(Icons.arrow_forward_ios_rounded),
                 ],
               ),
             ),

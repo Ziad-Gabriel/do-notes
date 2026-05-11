@@ -17,7 +17,7 @@ class _TaskPriorityState extends ConsumerState<TaskPriority> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Priority', style: Theme.of(context).textTheme.bodyLarge),
-        Row(
+       const  Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ChoosePriorityStyle(priorityIndex: 0),

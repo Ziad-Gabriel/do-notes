@@ -23,28 +23,31 @@ class TasksNotifier extends AsyncNotifier<List<TaskData>> {
   }
 
   Future<void> addTask(TaskData task) async {
-    state = const AsyncLoading();
-    state = await AsyncValue.guard(() async {
-      await _tasksDatabase.addTask(task);
-      return _tasksDatabase.fetchTasks();
-    });
+    await _tasksDatabase.addTask(task);
+    final updatedTasks = await _tasksDatabase.fetchTasks();
+    state = AsyncData(updatedTasks);
   }
 
-  Future<void> toggleIsCompleted(TaskData task) async {
-    state = const AsyncLoading();
-    state = await AsyncValue.guard(() async {
-      await _tasksDatabase.isar.writeTxn(() async {
-        task.isCompleted = !task.isCompleted;
-        await _tasksDatabase.isar.taskDatas.put(task);
-      });
-      return _tasksDatabase.fetchTasks();
+  Future<void> toggleIsCompleted(int id) async {
+    await _tasksDatabase.isar.writeTxn(() async {
+      final existing = await _tasksDatabase.isar.taskDatas.get(id);
+      if (existing == null) return;
+      final updated = TaskData()
+        ..id = existing.id
+        ..title = existing.title
+        ..description = existing.description
+        ..endDate = existing.endDate
+        ..priority = existing.priority
+        ..isCompleted = !existing.isCompleted;
+      await _tasksDatabase.isar.taskDatas.put(updated);
     });
+    final updatedTasks = await _tasksDatabase.fetchTasks();
+    state = AsyncData(updatedTasks);
   }
 
   Future<void> deleteTask(int id) async {
-    await _tasksDatabase.isar.writeTxn(() async {
-      await _tasksDatabase.isar.taskDatas.delete(id);
-    });
-    _tasksDatabase.fetchTasks();
+    await _tasksDatabase.deleteTask(id);
+    final updatedTasks = await _tasksDatabase.fetchTasks();
+    state = AsyncData(updatedTasks);
   }
 }

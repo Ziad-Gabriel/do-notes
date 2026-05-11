@@ -91,6 +91,7 @@ TaskData _taskDataDeserialize(
   object.description = reader.readString(offsets[0]);
   object.endDate = reader.readDateTime(offsets[1]);
   object.id = id;
+  object.isCompleted = reader.readBool(offsets[2]);
   object.priority = reader.readLong(offsets[3]);
   object.title = reader.readString(offsets[4]);
   return object;

@@ -14,7 +14,8 @@ class IsCompleted extends ConsumerWidget {
       shape: const CircleBorder(),
       onChanged: (bool? value) {
         if (value == null) return;
-        ref.read(tasksProvider.notifier).toggleIsCompleted(task);
+
+        ref.read(tasksProvider.notifier).toggleIsCompleted(task.id);
       },
     );
   }

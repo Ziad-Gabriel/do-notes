@@ -50,15 +50,15 @@ class _AddToDoViewState extends ConsumerState<AddToDoView> {
             begin: const Offset(0, 200),
             end: const Offset(0, 0),
           ),
-          duration: Duration(milliseconds: 500),
+          duration:const Duration(milliseconds: 500),
           builder: (context, offset, child) {
             return Transform.translate(offset: offset, child: child);
           },
           child: Container(
-            margin: EdgeInsets.only(top: 10),
+            margin:const EdgeInsets.only(top: 10),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.only(
+              borderRadius:const BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
@@ -89,12 +89,12 @@ class _AddToDoViewState extends ConsumerState<AddToDoView> {
                       });
                     },
                   ),
-                  TaskPriority(),
-                  SizedBox(height: 25),
+                 const TaskPriority(),
+                  const SizedBox(height: 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CancelButton(),
+                     const CancelButton(),
                       DoneButton(
                         title: titleController,
                         description: desController,
@@ -104,7 +104,7 @@ class _AddToDoViewState extends ConsumerState<AddToDoView> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),

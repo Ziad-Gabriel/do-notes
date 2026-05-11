@@ -10,13 +10,13 @@ class TaskEndDate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(Icons.watch_later_outlined),
-        SizedBox(width: 4),
+       const Icon(Icons.watch_later_outlined),
+       const SizedBox(width: 4),
         Text(
           DateFormat.yMMMd().format(endDate),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        SizedBox(width: 4),
+        const SizedBox(width: 4),
         Text(
           DateFormat.jm().format(endDate),
           style: Theme.of(context).textTheme.bodyMedium,

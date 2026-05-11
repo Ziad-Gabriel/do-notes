@@ -1,5 +1,6 @@
 import 'package:do_note/providers/tasks_provider.dart';
 import 'package:do_note/services/database_services.dart';
+import 'package:do_note/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,11 +11,12 @@ import 'package:do_note/main_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService().initNotifaction();
   final isarInstance = await TasksDatabase.initialize();
   runApp(
     ProviderScope(
       overrides: [isarProvider.overrideWithValue(isarInstance)],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }

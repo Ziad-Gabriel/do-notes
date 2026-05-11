@@ -4,19 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:do_note/providers/selected_date_state.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
-class TasksListView extends ConsumerStatefulWidget {
+class TasksListView extends ConsumerWidget {
   const TasksListView({super.key});
 
   @override
-  ConsumerState<TasksListView> createState() => _TasksListViewState();
-}
-
-class _TasksListViewState extends ConsumerState<TasksListView> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final allTasks = ref.watch(tasksProvider);
     final selectedDate = ref.watch(selectedDateProvider);
+    const priorityColors = {0: Colors.blue, 1: Colors.yellow, 2: Colors.red};
 
     return allTasks.when(
       data: (tasks) {
@@ -51,14 +48,26 @@ class _TasksListViewState extends ConsumerState<TasksListView> {
                       child: IntrinsicHeight(
                         child: Card(
                           elevation: 2,
-                          color: task.priority == 0
-                              ? Colors.blue
-                              : task.priority == 1
-                              ? Colors.yellow
-                              : Colors.red,
+                          color: priorityColors[task.priority],
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 6.0),
-                            child: TaskContainer(task: task),
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Slidable(
+                              startActionPane: ActionPane(
+                                motion: const StretchMotion(),
+                                children: [
+                                  SlidableAction(
+                                    onPressed: (context) {
+                                      ref.read(tasksProvider.notifier).deleteTask(task.id);
+                                    },
+                                    backgroundColor: Colors.transparent,
+                                    foregroundColor: Colors.black,
+                                    icon: Icons.delete_outline,
+                                    label: 'Delete',
+                                  ),
+                                ],
+                              ),
+                              child: TaskContainer(task: task),
+                            ),
                           ),
                         ),
                       ),
@@ -69,8 +78,9 @@ class _TasksListViewState extends ConsumerState<TasksListView> {
           ],
         );
       },
-      loading: () => const Scaffold(body: Center(child: CircularProgressIndicator())),
-error: (e, st) => Scaffold(body: Center(child: Text('Error: $e'))),
+      loading: () =>
+          const Scaffold(body: Center(child: CircularProgressIndicator())),
+      error: (e, st) => Scaffold(body: Center(child: Text('Error: $e'))),
     );
   }
 }

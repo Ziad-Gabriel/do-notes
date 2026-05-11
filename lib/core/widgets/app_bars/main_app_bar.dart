@@ -1,3 +1,4 @@
+import 'package:do_note/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,6 +21,7 @@ AppBar mainAppBar(String title, BuildContext context, WidgetRef ref) {
         onPressed: () {
           isDark = !isDark;
           themeNotifier.toggleTheme(isDark);
+          NotificationService().showNotification( title: 'Change app theme', body: 'App theme has been changed' );
         },
         icon: isDark
             ? const Icon(Icons.sunny, size: 26)

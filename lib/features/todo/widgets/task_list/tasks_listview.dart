@@ -1,3 +1,6 @@
+import 'package:do_note/core/constant/colors/const_colors.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/delete_button.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/edit_button.dart';
 import 'package:do_note/features/todo/widgets/task_list/task_container/task_container.dart';
 import 'package:do_note/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +16,6 @@ class TasksListView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final allTasks = ref.watch(tasksProvider);
     final selectedDate = ref.watch(selectedDateProvider);
-    const priorityColors = {0: Colors.blue, 1: Colors.yellow, 2: Colors.red};
 
     return allTasks.when(
       data: (tasks) {
@@ -44,6 +46,7 @@ class TasksListView extends ConsumerWidget {
                   itemBuilder: (context, index) {
                     final task = filteredDateTasks[index];
                     return Padding(
+                      key: ValueKey(task.id),
                       padding: const EdgeInsets.only(bottom: 2),
                       child: IntrinsicHeight(
                         child: Card(
@@ -52,18 +55,13 @@ class TasksListView extends ConsumerWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: Slidable(
+                              direction: Axis.horizontal,
                               startActionPane: ActionPane(
                                 motion: const StretchMotion(),
+                                extentRatio: 0.35,
                                 children: [
-                                  SlidableAction(
-                                    onPressed: (context) {
-                                      ref.read(tasksProvider.notifier).deleteTask(task.id);
-                                    },
-                                    backgroundColor: Colors.transparent,
-                                    foregroundColor: Colors.black,
-                                    icon: Icons.delete_outline,
-                                    label: 'Delete',
-                                  ),
+                                  deleteButton(task, ref, context),
+                                  editButton(task, ref, context),
                                 ],
                               ),
                               child: TaskContainer(task: task),

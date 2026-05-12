@@ -29,10 +29,10 @@ class TaskContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TaskTitle(title: task.title),
+                  TaskTitle(title: task.title, isCompleted: task.isCompleted),
                   // SizedBox(height: 4),
-                  TaskDescription(description: task.description),
-                  TaskEndDate(endDate: task.endDate),
+                  task.description.isEmpty ? const SizedBox.shrink() : TaskDescription(description: task.description),
+                  task.isCompleted ? const SizedBox.shrink() : TaskEndDate(endDate: task.endDate),
                 ],
               ),
             ),

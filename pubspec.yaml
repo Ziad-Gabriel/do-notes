@@ -17,17 +17,18 @@ dependencies:
   date_picker_timeline: ^1.2.7
   intl: ^0.20.2
   google_fonts: ^8.0.2
-  flutter_speed_dial: ^7.0.0
   isar: ^3.1.0+1
   isar_flutter_libs: ^3.1.0+1
   path_provider: ^2.1.5
   flutter_slidable: ^4.0.3
   flutter_local_notifications: ^21.0.0
-  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
 
   flutter_lints: ^6.0.0
   isar_generator: ^3.1.0+1
@@ -37,10 +38,14 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/logo.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/logo_foreground.png"
 
+flutter_native_splash:
+  color: "#dcbb00"
+  image: "assets/logo.png"
 
 flutter:
-
   uses-material-design: true
   assets:
     - assets/logo.png

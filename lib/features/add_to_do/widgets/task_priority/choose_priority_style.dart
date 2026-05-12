@@ -1,3 +1,4 @@
+import 'package:do_note/core/constant/colors/const_colors.dart';
 import 'package:do_note/providers/priority_index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,11 +26,7 @@ class _ChoosePriorityStyleState extends ConsumerState<ChoosePriorityStyle> {
             height: 100,
             width: 80,
             decoration: BoxDecoration(
-              color: widget.priorityIndex == 0
-                  ? Colors.blue
-                  : widget.priorityIndex == 1
-                  ? Colors.yellow
-                  : Colors.red,
+              color: priorityColors[widget.priorityIndex],
               borderRadius: BorderRadius.circular(8),
             ),
           ),
@@ -44,7 +41,7 @@ class _ChoosePriorityStyleState extends ConsumerState<ChoosePriorityStyle> {
             ),
           ),
           Padding(
-            padding:const EdgeInsets.only(top: 8),
+            padding: const EdgeInsets.only(top: 8),
             child: Text(
               widget.priorityIndex == 0
                   ? 'Low'

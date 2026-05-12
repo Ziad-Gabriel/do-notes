@@ -1,22 +1,20 @@
-import 'package:do_note/features/add_to_do/widgets/date_time_pickers/date_picker/date_picker.dart';
+import 'package:do_note/core/widgets/date_time_pickers/time_picker/time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-class ChooseDate extends StatefulWidget {
-  final DateTime? selectedDate;
-  final Function(DateTime) onDatePicked;
-
-  const ChooseDate({
+class ChooseTime extends StatefulWidget {
+  final TimeOfDay? selectedTime;
+  final Function(TimeOfDay) onTimePicked;
+  const ChooseTime({
     super.key,
-    required this.selectedDate,
-    required this.onDatePicked,
+    required this.selectedTime,
+    required this.onTimePicked,
   });
 
   @override
-  State<ChooseDate> createState() => _ChooseDateState();
+  State<ChooseTime> createState() => _ChooseTimeState();
 }
 
-class _ChooseDateState extends State<ChooseDate> {
+class _ChooseTimeState extends State<ChooseTime> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,13 +22,13 @@ class _ChooseDateState extends State<ChooseDate> {
       children: [
         Padding(
           padding:const EdgeInsets.only(left: 12),
-          child: Text('Date', style: Theme.of(context).textTheme.bodyLarge),
+          child: Text('Time', style: Theme.of(context).textTheme.bodyLarge),
         ),
         GestureDetector(
           onTap: () async {
-            DateTime? pickedDate = await showCustomDatePicker(context);
-            if (pickedDate != null) {
-              widget.onDatePicked(pickedDate);
+            TimeOfDay? pickedTime = await showCustomTimePicker(context);
+            if (pickedTime != null) {
+              widget.onTimePicked(pickedTime);
             }
           },
           child: Card(
@@ -42,14 +40,14 @@ class _ChooseDateState extends State<ChooseDate> {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.edit_calendar_rounded),
+                  const Icon(Icons.watch_later_outlined),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
-                        widget.selectedDate == null
-                            ? 'Pick Task Date'
-                            : DateFormat.yMMMd().format(widget.selectedDate!),
+                        widget.selectedTime == null
+                            ? 'Pick Task Time'
+                            : widget.selectedTime!.format(context),
                       ),
                     ),
                   ),

@@ -7,10 +7,9 @@ class CancelButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final priority = ref.read(priorityProvider.notifier).setPriority;
     return ElevatedButton(
       onPressed: () {
-        priority(1);
+        ref.read(priorityProvider.notifier).setPriority(1);
         Navigator.pop(context);
       },
       style: ElevatedButton.styleFrom(

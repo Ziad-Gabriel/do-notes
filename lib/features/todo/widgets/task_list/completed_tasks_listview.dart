@@ -1,3 +1,4 @@
+import 'package:do_note/features/todo/widgets/task_list/content/delete_button.dart';
 import 'package:do_note/features/todo/widgets/task_list/task_container/task_container.dart';
 import 'package:do_note/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
@@ -41,20 +42,9 @@ class CompletedTasksListview extends ConsumerWidget {
                             padding: const EdgeInsets.only(left: 8.0),
                             child: Slidable(
                               startActionPane: ActionPane(
+                                extentRatio: 0.25,
                                 motion: const StretchMotion(),
-                                children: [
-                                  SlidableAction(
-                                    onPressed: (context) {
-                                      ref
-                                          .read(tasksProvider.notifier)
-                                          .deleteTask(task.id);
-                                    },
-                                    backgroundColor: Colors.transparent,
-                                    foregroundColor: Colors.black,
-                                    icon: Icons.delete_outline,
-                                    label: 'Delete',
-                                  ),
-                                ],
+                                children: [deleteButton(task, ref, context)],
                               ),
                               child: TaskContainer(task: task),
                             ),

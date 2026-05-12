@@ -28,6 +28,12 @@ class TasksNotifier extends AsyncNotifier<List<TaskData>> {
     state = AsyncData(updatedTasks);
   }
 
+  Future<void> updateTask(TaskData task) async {
+    await _tasksDatabase.updateTask(task); // Calls the Isar update
+    final updatedTasks = await _tasksDatabase.fetchTasks(); // Fetch fresh data
+    state = AsyncData(updatedTasks); // Update UI
+  }
+
   Future<void> toggleIsCompleted(int id) async {
     await _tasksDatabase.isar.writeTxn(() async {
       final existing = await _tasksDatabase.isar.taskDatas.get(id);

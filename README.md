@@ -13,8 +13,8 @@ ToDo and Notes app
 ### 🛠️ Tech Stack
 
 - **Frontend:** Flutter / Dart
-- **State Management:** Provider / Riverpod / Bloc
-- **Database:** SQLite / Hive (Local) or Firebase (Cloud)
+- **State Management:** Provider / Riverpod
+- **Database:** Isar (Local) or Firebase (Cloud)
 - **Architecture:** Clean Architecture / MVVM
 
 ---

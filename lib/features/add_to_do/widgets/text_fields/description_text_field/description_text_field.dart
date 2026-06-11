@@ -8,13 +8,18 @@ class DescriptionTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MainTextFieldContainer(
-      title: 'Description (optional)',
-      icon: const Icon(Icons.description_rounded),
-      controller: controller,
-      maxLines: 3,
-      hintText: 'Enter description',
-      keyBoardType: TextInputType.multiline,
+    return Row(
+      children: [
+        const Icon(Icons.description_rounded),
+        MainTextFieldContainer(
+          title: 'Description (optional)',
+          icon: const Icon(Icons.description_rounded),
+          controller: controller,
+          maxLines: 3,
+          hintText: 'Enter description',
+          keyBoardType: TextInputType.multiline,
+        ),
+      ],
     );
   }
 }

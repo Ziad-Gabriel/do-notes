@@ -34,7 +34,7 @@ class _ChooseDateState extends State<ChooseDate> {
             }
           },
           child: Card(
-            color: Theme.of(context).colorScheme.surface,
+            color: Theme.of(context).colorScheme.primaryContainer,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 8.0,

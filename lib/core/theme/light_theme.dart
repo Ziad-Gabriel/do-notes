@@ -6,7 +6,7 @@ import 'package:do_note/core/constant/text/texts_styles.dart';
 class LightTheme {
   static ThemeData get theme => ThemeData(
     brightness: Brightness.light,
-    scaffoldBackgroundColor:const Color(0xFFF4F4F4),
+    scaffoldBackgroundColor:const Color(0xFFEBEBEB),
     colorScheme: LightColorScheme.lightColorScheme,
     textTheme: TextsStyles().appTextTheme,
   );

@@ -1,5 +1,5 @@
-import 'package:do_note/features/todo/widgets/task_list/completed_tasks_listview.dart';
-import 'package:do_note/features/todo/widgets/task_list/tasks_listview.dart';
+import 'package:do_note/features/todo/widgets/task_list/completed_tasks_list_view.dart';
+import 'package:do_note/features/todo/widgets/task_list/tasks_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,10 +8,8 @@ import 'package:do_note/features/todo/widgets/date_selection.dart';
 
 
 class ToDoView extends ConsumerStatefulWidget {
-
-  final PageController controller;
   
-  const ToDoView({super.key,required this.controller});
+  const ToDoView({super.key});
 
   @override
   ConsumerState<ToDoView> createState() => _ToDoViewState();
@@ -19,12 +17,10 @@ class ToDoView extends ConsumerStatefulWidget {
 
 class _ToDoViewState extends ConsumerState<ToDoView> {
 
+  final PageController controller=PageController();
 
-  final listview = const [TasksListView(), CompletedTasksListview()];
+  final List<Widget> listView = const [TasksListView(), CompletedTasksListView()];
 
-  
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +34,8 @@ class _ToDoViewState extends ConsumerState<ToDoView> {
           child:Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8, top: 4),
             child: PageView(
-              controller: widget.controller,
-              children: listview,
+              controller: controller,
+              children: listView,
               onPageChanged: (value) => taskListView.setNewIndex(value),
             ),
           ),

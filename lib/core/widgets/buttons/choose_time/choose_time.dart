@@ -21,7 +21,7 @@ class _ChooseTimeState extends State<ChooseTime> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding:const EdgeInsets.only(left: 12),
+          padding: const EdgeInsets.only(left: 12),
           child: Text('Time', style: Theme.of(context).textTheme.bodyLarge),
         ),
         GestureDetector(
@@ -32,7 +32,7 @@ class _ChooseTimeState extends State<ChooseTime> {
             }
           },
           child: Card(
-            color: Theme.of(context).colorScheme.surface,
+            color: Theme.of(context).colorScheme.primaryContainer,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 8.0,

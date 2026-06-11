@@ -36,7 +36,7 @@ class _ChoosePriorityStyleState extends ConsumerState<ChoosePriorityStyle> {
             height: priority == widget.priorityIndex ? 0 : 92,
             width: 80,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
+              color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(8),
             ),
           ),

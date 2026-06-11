@@ -1,6 +1,6 @@
 import 'package:do_note/core/utils/validators/add_task/title_valid.dart';
 import 'package:do_note/core/widgets/alert_dialog/alert_dialog.dart';
-import 'package:do_note/model/data/tasks_data.dart';
+import 'package:do_note/model/data/tasks_data/tasks_data.dart';
 import 'package:do_note/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

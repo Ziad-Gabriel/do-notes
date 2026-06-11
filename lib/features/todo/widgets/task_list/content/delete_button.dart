@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-import 'package:do_note/model/data/tasks_data.dart';
+import 'package:do_note/model/data/tasks_data/tasks_data.dart';
 import 'package:do_note/providers/tasks_provider.dart';
 
 SlidableAction deleteButton(

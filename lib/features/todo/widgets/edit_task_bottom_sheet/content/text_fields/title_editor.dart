@@ -1,3 +1,4 @@
+import 'package:do_note/core/widgets/main_text_filed/main_text_field_container.dart';
 import 'package:flutter/material.dart';
 
 class TitleEditor extends StatefulWidget {
@@ -12,25 +13,13 @@ class TitleEditor extends StatefulWidget {
 class _TitleEditorState extends State<TitleEditor> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: TextField(
-        controller: widget.titleController,
-        autofocus: true,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          label: const Text('Edit Title'),
-          labelStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-            color: Theme.of(context).colorScheme.onPrimary.withAlpha(150),
-          ),
-        ),
-      ),
+    return MainTextFieldContainer(
+      title: 'Edit Title',
+      icon: const Icon(Icons.title_rounded),
+      controller: widget.titleController,
+      maxLines: 1,
+      hintText: 'Edit title',
+      keyBoardType: TextInputType.text,
     );
   }
 }

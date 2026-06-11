@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-
-class DoneButton extends ConsumerWidget {
-
+class MainButton extends ConsumerWidget {
   final Function() onPressed;
+  final String title;
 
-  const DoneButton({
-    super.key,
-    required this.onPressed,
-  });
+  const MainButton({super.key, required this.onPressed, required this.title});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      onPressed: onPressed, 
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).colorScheme.primary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
-      child: Text('Done', style: Theme.of(context).textTheme.bodyMedium),
+      child: Text(title, style: Theme.of(context).textTheme.bodyMedium),
     );
   }
 }

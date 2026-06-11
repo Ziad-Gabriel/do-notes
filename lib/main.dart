@@ -1,21 +1,32 @@
-import 'package:do_note/providers/tasks_provider.dart';
-import 'package:do_note/services/database_services.dart';
-import 'package:do_note/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:isar/isar.dart';
 
+import 'package:do_note/model/data/note_data/note_data.dart';
+import 'package:do_note/model/data/tasks_data/tasks_data.dart';
+import 'package:do_note/providers/note_provider.dart';
+import 'package:do_note/features/profile_singing/sing_up/view/sing_up_view.dart';
+import 'package:do_note/providers/tasks_provider.dart';
 import 'package:do_note/core/theme/dark_theme.dart';
 import 'package:do_note/core/theme/light_theme.dart';
 import 'package:do_note/core/theme/theme_provider.dart';
-import 'package:do_note/main_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await NotificationService().initNotifaction();
-  final isarInstance = await TasksDatabase.initialize();
+  // await NotificationService().initNotification();
+  final dir = await getApplicationDocumentsDirectory();
+  final isar = await Isar.open(
+    [TaskDataSchema, NoteDataSchema],
+    directory: dir.path,
+    inspector: true, // for debugging
+  );
   runApp(
     ProviderScope(
-      overrides: [isarProvider.overrideWithValue(isarInstance)],
+      overrides: [
+        isarTasksProvider.overrideWithValue(isar),
+        isarNotesProvider.overrideWithValue(isar),
+      ],
       child: const MyApp(),
     ),
   );
@@ -34,7 +45,8 @@ class MyApp extends ConsumerWidget {
       theme: LightTheme.theme,
       darkTheme: DarkTheme.theme,
       themeMode: themeMode,
-      home: const MainView(),
+      home: const SingUpView(),
+      // const MainView(),
     );
   }
 }

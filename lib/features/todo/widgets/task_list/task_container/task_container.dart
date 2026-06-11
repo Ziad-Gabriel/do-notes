@@ -2,7 +2,7 @@ import 'package:do_note/features/todo/widgets/task_list/content/is_completed.dar
 import 'package:do_note/features/todo/widgets/task_list/content/task_description.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_end_date.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_title.dart';
-import 'package:do_note/model/data/tasks_data.dart';
+import 'package:do_note/model/data/tasks_data/tasks_data.dart';
 import 'package:flutter/material.dart';
 
 class TaskContainer extends StatelessWidget {
@@ -30,7 +30,6 @@ class TaskContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TaskTitle(title: task.title, isCompleted: task.isCompleted),
-                  // SizedBox(height: 4),
                   task.description.isEmpty ? const SizedBox.shrink() : TaskDescription(description: task.description),
                   task.isCompleted ? const SizedBox.shrink() : TaskEndDate(endDate: task.endDate),
                 ],

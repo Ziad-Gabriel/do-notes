@@ -13,9 +13,12 @@ class DateSelection extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
     final selectedDate = ref.watch(selectedDateProvider.notifier);
     return Container(
-      color: colorScheme.primary,
+      decoration: BoxDecoration(
+        color: colorScheme.primary,
+        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(30)),
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         child: DatePicker(
           DateTime.now(),
           height: 120,
@@ -23,20 +26,20 @@ class DateSelection extends ConsumerWidget {
           selectionColor: const Color.fromARGB(255, 214, 214, 214),
           selectedTextColor: Colors.black,
           initialSelectedDate: DateTime.now(),
-          dayTextStyle:const TextStyle(
+          dayTextStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color:  Color.fromARGB(255, 79, 79, 79),
+            color: Color.fromARGB(255, 79, 79, 79),
           ),
           dateTextStyle: const TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w700,
-            color:  Color.fromARGB(255, 79, 79, 79),
+            color: Color.fromARGB(255, 79, 79, 79),
           ),
           monthTextStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color:  Color.fromARGB(255, 79, 79, 79),
+            color: Color.fromARGB(255, 79, 79, 79),
           ),
 
           onDateChange: (date) {

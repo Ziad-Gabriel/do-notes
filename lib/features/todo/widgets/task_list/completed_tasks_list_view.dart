@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class CompletedTasksListview extends ConsumerWidget {
-  const CompletedTasksListview({super.key});
+class CompletedTasksListView extends ConsumerWidget {
+  const CompletedTasksListView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

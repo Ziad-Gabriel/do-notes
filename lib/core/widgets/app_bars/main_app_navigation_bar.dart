@@ -22,7 +22,7 @@ class MainAppNavigationBar extends ConsumerWidget {
       child: Container(
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface.withAlpha(235),
+          color: Theme.of(context).colorScheme.primaryContainer.withAlpha(235),
           borderRadius: BorderRadius.circular(16),
           boxShadow: const [
             BoxShadow(
@@ -56,7 +56,7 @@ class MainAppNavigationBar extends ConsumerWidget {
                       onTap(0);
                     }
                   },
-                  icon: const Icon(Icons.check_circle_outline_rounded),
+                  icon: const Icon(Icons.checklist_rounded),
                 ),
               ],
             ),
@@ -80,7 +80,7 @@ class MainAppNavigationBar extends ConsumerWidget {
                       onTap(1);
                     }
                   },
-                  icon: const Icon(Icons.check_circle_rounded),
+                  icon: const Icon(Icons.sticky_note_2_rounded),
                 ),
               ],
             ),

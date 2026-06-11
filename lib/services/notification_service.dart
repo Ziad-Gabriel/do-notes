@@ -8,7 +8,7 @@ class NotificationService {
   bool get isInitialized => _initialized;
   
   // Initialize the notification service
-  Future<void> initNotifaction() async {
+  Future<void> initNotification() async {
     if (_initialized) return;
 
     //android initialization

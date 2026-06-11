@@ -2,10 +2,10 @@ import 'package:do_note/core/utils/done_buttons/done_edit.dart';
 import 'package:do_note/core/widgets/buttons/cancel/cancel_button.dart';
 import 'package:do_note/core/widgets/buttons/choose_date/choose_date.dart';
 import 'package:do_note/core/widgets/buttons/choose_time/choose_time.dart';
-import 'package:do_note/core/widgets/buttons/done/done_button.dart';
+import 'package:do_note/core/widgets/buttons/main_button/main_button.dart';
 import 'package:do_note/features/todo/widgets/edit_task_bottom_sheet/content/text_fields/description_editor.dart';
 import 'package:do_note/features/todo/widgets/edit_task_bottom_sheet/content/text_fields/title_editor.dart';
-import 'package:do_note/model/data/tasks_data.dart';
+import 'package:do_note/model/data/tasks_data/tasks_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -51,7 +51,7 @@ class _EditTaskSheetState extends ConsumerState<EditTaskSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.primaryContainer,
+      color: Theme.of(context).colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -92,7 +92,8 @@ class _EditTaskSheetState extends ConsumerState<EditTaskSheet> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const CancelButton(),
-                DoneButton(
+                MainButton(
+                  title: 'Done',
                   onPressed: doneEditTask(
                     taskId: widget.task.id,
                     title: titleController,

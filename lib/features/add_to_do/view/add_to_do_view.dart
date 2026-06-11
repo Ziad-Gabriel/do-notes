@@ -6,7 +6,7 @@ import 'package:do_note/providers/priority_index.dart';
 import 'package:do_note/core/widgets/buttons/cancel/cancel_button.dart';
 import 'package:do_note/core/widgets/buttons/choose_date/choose_date.dart';
 import 'package:do_note/core/widgets/buttons/choose_time/choose_time.dart';
-import 'package:do_note/core/widgets/buttons/done/done_button.dart';
+import 'package:do_note/core/widgets/buttons/main_button/main_button.dart';
 import 'package:do_note/features/add_to_do/widgets/task_priority/priority.dart';
 import 'package:do_note/features/add_to_do/widgets/text_fields/description_text_field/description_text_field.dart';
 import 'package:do_note/features/add_to_do/widgets/text_fields/title_text_field/title_text_field.dart';
@@ -58,7 +58,7 @@ class _AddToDoViewState extends ConsumerState<AddToDoView> {
           child: Container(
             margin: const EdgeInsets.only(top: 10),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
@@ -72,8 +72,8 @@ class _AddToDoViewState extends ConsumerState<AddToDoView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TitleTextField(titleController: titleController),
-                  DescriptionTextField(desController: desController),
+                  TitleTextField(controller: titleController),
+                  DescriptionTextField(controller: desController),
                   ChooseDate(
                     selectedDate: date,
                     onDatePicked: (selectedDate) {
@@ -96,7 +96,8 @@ class _AddToDoViewState extends ConsumerState<AddToDoView> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       const CancelButton(),
-                      DoneButton(
+                      MainButton(
+                        title: 'Add Task',
                         onPressed: addTask(
                           title: titleController,
                           description: desController,

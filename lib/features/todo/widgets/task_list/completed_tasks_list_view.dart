@@ -1,4 +1,4 @@
-import 'package:do_note/features/todo/widgets/task_list/content/delete_button.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/buttons/delete_button.dart';
 import 'package:do_note/features/todo/widgets/task_list/task_container/task_container.dart';
 import 'package:do_note/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +24,7 @@ class CompletedTasksListView extends ConsumerWidget {
               'Completed Tasks',
               style: Theme.of(context).textTheme.titleLarge,
             ),
+
             if (completedTasks.isEmpty)
               const Expanded(child: Center(child: Text("No Completed tasks")))
             else
@@ -59,8 +60,8 @@ class CompletedTasksListView extends ConsumerWidget {
         );
       },
       loading: () =>
-          const Scaffold(body: Center(child: CircularProgressIndicator())),
-      error: (e, st) => Scaffold(body: Center(child: Text('Error: $e'))),
+          const Center(child: CircularProgressIndicator()),
+      error: (e, st) =>  Center(child: Text('Error: $e')),
     );
   }
 }

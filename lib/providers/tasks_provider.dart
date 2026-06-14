@@ -19,7 +19,6 @@ class TasksNotifier extends AsyncNotifier<List<TaskData>> {
   Future<List<TaskData>> build() async {
     final isar = ref.watch(isarTasksProvider);
     _tasksDatabase = TasksDatabase(isar);
-    await Future.delayed(Duration.zero);
     return _tasksDatabase.fetchTasks();
   }
 

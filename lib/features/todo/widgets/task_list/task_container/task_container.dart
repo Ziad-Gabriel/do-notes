@@ -1,4 +1,4 @@
-import 'package:do_note/features/todo/widgets/task_list/content/is_completed.dart';
+import 'package:do_note/features/todo/widgets/task_list/content/buttons/is_completed.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_description.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_end_date.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_title.dart';

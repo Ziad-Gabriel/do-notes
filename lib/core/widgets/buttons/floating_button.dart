@@ -26,7 +26,7 @@ Widget mainFloatingActionButton(BuildContext context) {
         label: 'Add Note',
         onTap: () => Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const AddNoteView()),
+          MaterialPageRoute(builder: (context) => const AddNoteView(isNew:true)),
         ),
       ),
     ],

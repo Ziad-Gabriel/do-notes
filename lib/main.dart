@@ -16,11 +16,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await NotificationService().initNotification();
   final dir = await getApplicationDocumentsDirectory();
-  final isar = await Isar.open(
-    [TaskDataSchema, NoteDataSchema],
-    directory: dir.path,
-    inspector: true, // for debugging
-  );
+  final isar = await Isar.open([
+    TaskDataSchema,
+    NoteDataSchema,
+  ], directory: dir.path);
   runApp(
     ProviderScope(
       overrides: [

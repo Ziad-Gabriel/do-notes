@@ -1,3 +1,4 @@
+import 'package:do_note/features/note/widgets/note_container/note_container.dart';
 import 'package:do_note/providers/note_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +7,7 @@ class NoteView extends ConsumerWidget {
   const NoteView({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final notesAsync = ref.watch(noteProvider);
 
     return notesAsync.when(
@@ -19,30 +20,12 @@ class NoteView extends ConsumerWidget {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
+            mainAxisSpacing: 8,
           ),
           itemCount: notes.length,
           itemBuilder: (context, index) {
             final note = notes[index];
-            return Card(
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(note.title, style: Theme.of(context).textTheme.titleLarge),
-                    const SizedBox(height: 8),
-                    Expanded(
-                      child: Text(
-                        note.content,
-                        maxLines: 5,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
+            return NoteContainer(note: note);
           },
         );
       },

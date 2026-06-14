@@ -3,6 +3,7 @@ import 'package:do_note/core/widgets/buttons/cancel/cancel_button.dart';
 import 'package:do_note/core/widgets/buttons/choose_date/choose_date.dart';
 import 'package:do_note/core/widgets/buttons/choose_time/choose_time.dart';
 import 'package:do_note/core/widgets/buttons/main_button/main_button.dart';
+import 'package:do_note/features/todo/widgets/edit_task_bottom_sheet/content/edit_priority/edit_priority.dart';
 import 'package:do_note/features/todo/widgets/edit_task_bottom_sheet/content/text_fields/description_editor.dart';
 import 'package:do_note/features/todo/widgets/edit_task_bottom_sheet/content/text_fields/title_editor.dart';
 import 'package:do_note/model/data/tasks_data/tasks_data.dart';
@@ -88,6 +89,44 @@ class _EditTaskSheetState extends ConsumerState<EditTaskSheet> {
               ],
             ),
             const SizedBox(height: 10),
+            Card(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    EditPriority(
+                      selectedPriority: widget.task.priority,
+                      priority: 0,
+                      onTap: () {
+                        setState(() {
+                          widget.task.priority = 0;
+                        });
+                      },
+                    ),
+                    EditPriority(
+                      selectedPriority: widget.task.priority,
+                      priority: 1,
+                      onTap: () {
+                        setState(() {
+                          widget.task.priority = 1;
+                        });
+                      },
+                    ),
+                    EditPriority(
+                      selectedPriority: widget.task.priority,
+                      priority: 2,
+                      onTap: () {
+                        setState(() {
+                          widget.task.priority = 2;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

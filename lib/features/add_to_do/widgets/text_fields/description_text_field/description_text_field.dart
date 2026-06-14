@@ -8,9 +8,7 @@ class DescriptionTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Icon(Icons.description_rounded),
+    return 
         MainTextFieldContainer(
           title: 'Description (optional)',
           icon: const Icon(Icons.description_rounded),
@@ -18,8 +16,7 @@ class DescriptionTextField extends StatelessWidget {
           maxLines: 3,
           hintText: 'Enter description',
           keyBoardType: TextInputType.multiline,
-        ),
-      ],
+       
     );
   }
 }

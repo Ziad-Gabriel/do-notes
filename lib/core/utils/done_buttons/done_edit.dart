@@ -1,7 +1,7 @@
 import 'package:do_note/core/utils/validators/add_task/title_valid.dart';
-import 'package:do_note/core/widgets/alert_dialog/alert_dialog.dart';
-import 'package:do_note/model/data/tasks_data/tasks_data.dart';
-import 'package:do_note/providers/tasks_provider.dart';
+import 'package:do_note/core/widgets/alert_dialog/error_alert_dialog.dart';
+import 'package:do_note/core/model/data/tasks_data/tasks_data.dart';
+import 'package:do_note/core/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +20,7 @@ Function() doneEditTask({
       showDialog(
         context: context,
         builder: (context) =>
-            customAlertDialog(context, message: 'Enter correct title'),
+            customErrorAlertDialog(context, message: 'Enter correct title'),
       );
     } else {
       final editDateTime = DateTime(

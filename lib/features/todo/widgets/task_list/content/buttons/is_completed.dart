@@ -1,5 +1,5 @@
-import 'package:do_note/model/data/tasks_data/tasks_data.dart';
-import 'package:do_note/providers/tasks_provider.dart';
+import 'package:do_note/core/model/data/tasks_data/tasks_data.dart';
+import 'package:do_note/core/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

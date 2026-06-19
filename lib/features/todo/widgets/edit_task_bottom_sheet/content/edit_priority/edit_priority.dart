@@ -1,4 +1,4 @@
-import 'package:do_note/core/constant/colors/const_colors.dart';
+import 'package:do_note/core/constants/colors/const_colors.dart';
 import 'package:flutter/material.dart';
 
 class EditPriority extends StatefulWidget {

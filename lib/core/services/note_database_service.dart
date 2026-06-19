@@ -1,7 +1,7 @@
 import 'package:isar/isar.dart';
 // import 'package:path_provider/path_provider.dart';
 
-import 'package:do_note/model/data/note_data/note_data.dart';
+import 'package:do_note/core/model/data/note_data/note_data.dart';
 
 class NoteDatabaseService {
   final Isar isar;

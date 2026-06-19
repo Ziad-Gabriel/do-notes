@@ -1,12 +1,12 @@
-import 'package:do_note/core/constant/colors/const_colors.dart';
+import 'package:do_note/core/constants/colors/const_colors.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/buttons/delete_button.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/buttons/edit_button.dart';
 import 'package:do_note/features/todo/widgets/task_list/task_container/task_container.dart';
-import 'package:do_note/providers/tasks_provider.dart';
+import 'package:do_note/core/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:do_note/providers/selected_date_state.dart';
+import 'package:do_note/core/providers/selected_date_state.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class TasksListView extends ConsumerWidget {

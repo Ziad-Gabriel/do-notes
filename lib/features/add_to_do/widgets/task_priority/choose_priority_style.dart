@@ -1,5 +1,5 @@
-import 'package:do_note/core/constant/colors/const_colors.dart';
-import 'package:do_note/providers/priority_index.dart';
+import 'package:do_note/core/constants/colors/const_colors.dart';
+import 'package:do_note/core/providers/priority_index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,5 +1,7 @@
+import 'package:do_note/core/widgets/alert_dialog/delete_note_alert_dialog.dart';
+import 'package:do_note/features/add_note/view/add_note_view.dart';
 import 'package:do_note/features/note/widgets/note_container/note_container.dart';
-import 'package:do_note/providers/note_provider.dart';
+import 'package:do_note/core/providers/note_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,7 +27,32 @@ class NoteView extends ConsumerWidget {
           itemCount: notes.length,
           itemBuilder: (context, index) {
             final note = notes[index];
-            return NoteContainer(note: note);
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddNoteView(
+                      isNew: false,
+                      titleController: TextEditingController(text: note.title),
+                      contentController: TextEditingController(
+                        text: note.content,
+                      ),
+                      noteId: note.id,
+                    ),
+                  ),
+                );
+              },
+              onLongPress: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => customDeleteAlertDialog(context, () {
+                    ref.read(noteProvider.notifier).deleteNote(note.id);
+                  }),
+                );
+              },
+              child: NoteContainer(note: note),
+            );
           },
         );
       },

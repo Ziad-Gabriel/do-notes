@@ -6,7 +6,7 @@ import 'package:do_note/core/widgets/buttons/main_button/main_button.dart';
 import 'package:do_note/features/todo/widgets/edit_task_bottom_sheet/content/edit_priority/edit_priority.dart';
 import 'package:do_note/features/todo/widgets/edit_task_bottom_sheet/content/text_fields/description_editor.dart';
 import 'package:do_note/features/todo/widgets/edit_task_bottom_sheet/content/text_fields/title_editor.dart';
-import 'package:do_note/model/data/tasks_data/tasks_data.dart';
+import 'package:do_note/core/model/data/tasks_data/tasks_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

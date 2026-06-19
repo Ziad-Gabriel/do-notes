@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:isar/isar.dart';
 
-import 'package:do_note/model/data/note_data/note_data.dart';
-import 'package:do_note/model/data/tasks_data/tasks_data.dart';
-import 'package:do_note/providers/note_provider.dart';
-import 'package:do_note/features/profile_singing/sing_up/view/sing_up_view.dart';
-import 'package:do_note/providers/tasks_provider.dart';
+import 'package:do_note/core/model/data/note_data/note_data.dart';
+import 'package:do_note/core/model/data/tasks_data/tasks_data.dart';
+import 'package:do_note/core/providers/note_provider.dart';
+import 'package:do_note/features/auth/sing_up/view/sing_up_view.dart';
+import 'package:do_note/core/providers/tasks_provider.dart';
 import 'package:do_note/core/theme/dark_theme.dart';
 import 'package:do_note/core/theme/light_theme.dart';
 import 'package:do_note/core/theme/theme_provider.dart';

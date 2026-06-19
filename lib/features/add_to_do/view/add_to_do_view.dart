@@ -2,7 +2,7 @@ import 'package:do_note/core/utils/done_buttons/done_add.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:do_note/providers/priority_index.dart';
+import 'package:do_note/core/providers/priority_index.dart';
 import 'package:do_note/core/widgets/buttons/cancel/cancel_button.dart';
 import 'package:do_note/core/widgets/buttons/choose_date/choose_date.dart';
 import 'package:do_note/core/widgets/buttons/choose_time/choose_time.dart';

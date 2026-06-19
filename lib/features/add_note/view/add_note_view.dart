@@ -1,27 +1,33 @@
 import 'package:do_note/features/add_note/widgets/text_fields/note_text_field.dart';
 import 'package:do_note/features/add_note/widgets/text_fields/note_title_text_field.dart';
-import 'package:do_note/model/data/note_data/note_data.dart';
-import 'package:do_note/providers/note_provider.dart';
+import 'package:do_note/core/model/data/note_data/note_data.dart';
+import 'package:do_note/core/providers/note_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AddNoteView extends ConsumerStatefulWidget {
+  final int noteId;
+  final TextEditingController titleController;
+  final TextEditingController contentController;
 
   final bool isNew;
-  const AddNoteView({super.key, required this.isNew});
+  const AddNoteView({
+    super.key,
+    required this.isNew,
+    required this.titleController,
+    required this.contentController,
+    required this.noteId,
+  });
 
   @override
   ConsumerState<AddNoteView> createState() => _AddNoteViewState();
 }
 
 class _AddNoteViewState extends ConsumerState<AddNoteView> {
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController contentController = TextEditingController();
-
   @override
   void dispose() {
-    titleController.dispose();
-    contentController.dispose();
+    widget.titleController.dispose();
+    widget.contentController.dispose();
     super.dispose();
   }
 
@@ -30,21 +36,31 @@ class _AddNoteViewState extends ConsumerState<AddNoteView> {
     return PopScope(
       canPop: true,
       onPopInvokedWithResult: (bool didPop, Object? result) {
-        if (titleController.text.isEmpty && contentController.text.isEmpty) {
+        if (widget.titleController.text.isEmpty &&
+            widget.contentController.text.isEmpty) {
           return; // Allow popping if both fields are empty
-        } else if(widget.isNew) {
+        } else if (widget.isNew) {
           final newNote = NoteData()
-            ..title = titleController.text
-            ..content = contentController.text;
+            ..title = widget.titleController.text
+            ..content = widget.contentController.text;
 
           ref.read(noteProvider.notifier).addNote(newNote);
-        }else{
-          
+        } else {
+          final updatedNote = NoteData()
+            ..id = widget.noteId
+            ..title = widget.titleController.text
+            ..content = widget.contentController.text;
+
+          ref.read(noteProvider.notifier).updateNote(updatedNote);
         }
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Note'),
+          title: Hero(
+            tag: 'app bar title',
+            child: Text('Note', style: Theme.of(context).textTheme.titleLarge),
+          ),
+          centerTitle: true,
           backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: Padding(
@@ -57,8 +73,10 @@ class _AddNoteViewState extends ConsumerState<AddNoteView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              NoteTitleTextField(controller: titleController),
-              Expanded(child: NoteTextField(controller: contentController)),
+              NoteTitleTextField(controller: widget.titleController),
+              Expanded(
+                child: NoteTextField(controller: widget.contentController),
+              ),
             ],
           ),
         ),

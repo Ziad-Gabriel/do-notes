@@ -1,8 +1,8 @@
 import 'package:do_note/core/utils/validators/add_task/title_valid.dart';
-import 'package:do_note/core/widgets/alert_dialog/alert_dialog.dart';
-import 'package:do_note/model/data/tasks_data/tasks_data.dart';
-import 'package:do_note/providers/priority_index.dart';
-import 'package:do_note/providers/tasks_provider.dart';
+import 'package:do_note/core/widgets/alert_dialog/error_alert_dialog.dart';
+import 'package:do_note/core/model/data/tasks_data/tasks_data.dart';
+import 'package:do_note/core/providers/priority_index.dart';
+import 'package:do_note/core/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,7 +19,7 @@ Function() addTask({
     if (!titleValid(title: title.text) && date == null) {
       showDialog(
         context: context,
-        builder: (context) => customAlertDialog(
+        builder: (context) => customErrorAlertDialog(
           context,
           message: 'Enter correct title and choose date',
         ),
@@ -28,13 +28,13 @@ Function() addTask({
       showDialog(
         context: context,
         builder: (context) =>
-            customAlertDialog(context, message: 'Enter correct title'),
+            customErrorAlertDialog(context, message: 'Enter correct title'),
       );
     } else if (date == null) {
       showDialog(
         context: context,
         builder: (context) =>
-            customAlertDialog(context, message: 'Choose date'),
+            customErrorAlertDialog(context, message: 'Choose date'),
       );
     } else {
       final finalDateTime = DateTime(

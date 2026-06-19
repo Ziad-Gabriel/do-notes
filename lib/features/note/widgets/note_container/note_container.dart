@@ -1,6 +1,6 @@
 import 'package:do_note/features/note/widgets/note_content/note_content.dart';
 import 'package:do_note/features/note/widgets/note_content/note_title.dart';
-import 'package:do_note/model/data/note_data/note_data.dart';
+import 'package:do_note/core/model/data/note_data/note_data.dart';
 import 'package:flutter/material.dart';
 
 class NoteContainer extends StatelessWidget {

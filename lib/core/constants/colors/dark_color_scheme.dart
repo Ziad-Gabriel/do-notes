@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:do_note/core/constant/colors/const_colors.dart';
+import 'package:do_note/core/constants/colors/const_colors.dart';
 
 class DarkColorScheme {
   static ColorScheme get darkColorScheme {

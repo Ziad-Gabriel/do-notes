@@ -21,11 +21,7 @@ class _MainViewState extends ConsumerState<MainView> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: mainAppBar(
-        currentIndex == 0 ? 'ToDo' : 'Notes',
-        context, 
-        ref
-      ),
+      appBar: mainAppBar(currentIndex == 0 ? 'ToDo' : 'Note', context, ref),
       body: currentIndex == 0 ? const ToDoView() : const NoteView(),
       floatingActionButton: mainFloatingActionButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

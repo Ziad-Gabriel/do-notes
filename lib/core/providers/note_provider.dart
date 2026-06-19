@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:isar/isar.dart';
 
-import 'package:do_note/model/data/note_data/note_data.dart';
-import 'package:do_note/services/note_database_service.dart';
+import 'package:do_note/core/model/data/note_data/note_data.dart';
+import 'package:do_note/core/services/note_database_service.dart';
 
 final isarNotesProvider = Provider<Isar>((ref) {
   throw UnimplementedError();

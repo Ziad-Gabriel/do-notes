@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-AlertDialog customAlertDialog(BuildContext context,{required String message}){
+AlertDialog customErrorAlertDialog(BuildContext context, {required String message}) {
   return AlertDialog(
-      title: const Text('Invalid input'),
-      content: Text(message),
-      actions: [
+    title: const Text('Invalid input'),
+    content: Text(message),
+    actions: [
       ElevatedButton(
         onPressed: () => Navigator.pop(context),
         style: ElevatedButton.styleFrom(
@@ -14,5 +14,5 @@ AlertDialog customAlertDialog(BuildContext context,{required String message}){
         child: const Text('OK'),
       ),
     ],
-    );}
-
+  );
+}

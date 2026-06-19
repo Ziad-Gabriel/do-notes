@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:do_note/features/profile_singing/shared_widget/text_fields/user_name_text_field.dart';
-import 'package:do_note/features/profile_singing/shared_widget/app_name/app_name.dart';
-import 'package:do_note/features/profile_singing/shared_widget/button/convert_button.dart';
-import 'package:do_note/features/profile_singing/shared_widget/text_fields/password_text_field.dart';
-import 'package:do_note/features/profile_singing/sing_in/view/sing_in_view.dart';
-import 'package:do_note/features/profile_singing/sing_up/widgets/button/sing_up_button.dart';
+import 'package:do_note/features/auth/shared_widget/text_fields/user_name_text_field.dart';
+import 'package:do_note/features/auth/shared_widget/app_name/app_name.dart';
+import 'package:do_note/features/auth/shared_widget/button/convert_button.dart';
+import 'package:do_note/features/auth/shared_widget/text_fields/password_text_field.dart';
+import 'package:do_note/features/auth/sing_in/view/sing_in_view.dart';
+import 'package:do_note/features/auth/sing_up/widgets/button/sing_up_button.dart';
 
 class SingUpView extends StatefulWidget {
   const SingUpView({super.key});

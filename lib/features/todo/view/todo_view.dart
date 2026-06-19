@@ -4,7 +4,7 @@ import 'package:do_note/features/todo/widgets/task_list/tasks_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:do_note/providers/nav_task_list.dart';
+import 'package:do_note/core/providers/nav_task_list.dart';
 import 'package:do_note/features/todo/widgets/date_selection.dart';
 
 class ToDoView extends ConsumerStatefulWidget {

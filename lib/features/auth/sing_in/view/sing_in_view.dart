@@ -1,10 +1,10 @@
-import 'package:do_note/features/profile_singing/shared_widget/app_name/app_name.dart';
-import 'package:do_note/features/profile_singing/shared_widget/button/convert_button.dart';
-import 'package:do_note/features/profile_singing/shared_widget/text_fields/password_text_field.dart';
-import 'package:do_note/features/profile_singing/sing_in/widgets/button/sing_in_button.dart';
-import 'package:do_note/features/profile_singing/sing_in/widgets/text_field/confirm_password_text_field.dart';
-import 'package:do_note/features/profile_singing/shared_widget/text_fields/user_name_text_field.dart';
-import 'package:do_note/features/profile_singing/sing_up/view/sing_up_view.dart';
+import 'package:do_note/features/auth/shared_widget/app_name/app_name.dart';
+import 'package:do_note/features/auth/shared_widget/button/convert_button.dart';
+import 'package:do_note/features/auth/shared_widget/text_fields/password_text_field.dart';
+import 'package:do_note/features/auth/sing_in/widgets/button/sing_in_button.dart';
+import 'package:do_note/features/auth/sing_in/widgets/text_field/confirm_password_text_field.dart';
+import 'package:do_note/features/auth/shared_widget/text_fields/user_name_text_field.dart';
+import 'package:do_note/features/auth/sing_up/view/sing_up_view.dart';
 import 'package:flutter/material.dart';
 
 class SingInView extends StatefulWidget {

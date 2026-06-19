@@ -1,6 +1,6 @@
 import 'package:do_note/features/todo/widgets/task_list/content/buttons/delete_button.dart';
 import 'package:do_note/features/todo/widgets/task_list/task_container/task_container.dart';
-import 'package:do_note/providers/tasks_provider.dart';
+import 'package:do_note/core/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';

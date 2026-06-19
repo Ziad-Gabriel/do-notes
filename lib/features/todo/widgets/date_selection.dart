@@ -2,7 +2,7 @@ import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:do_note/providers/selected_date_state.dart';
+import 'package:do_note/core/providers/selected_date_state.dart';
 
 class DateSelection extends ConsumerWidget {
   const DateSelection({super.key});

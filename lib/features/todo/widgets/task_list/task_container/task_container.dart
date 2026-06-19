@@ -2,7 +2,7 @@ import 'package:do_note/features/todo/widgets/task_list/content/buttons/is_compl
 import 'package:do_note/features/todo/widgets/task_list/content/task_description.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_end_date.dart';
 import 'package:do_note/features/todo/widgets/task_list/content/task_title.dart';
-import 'package:do_note/model/data/tasks_data/tasks_data.dart';
+import 'package:do_note/core/model/data/tasks_data/tasks_data.dart';
 import 'package:flutter/material.dart';
 
 class TaskContainer extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:isar/isar.dart';
 
-import 'package:do_note/model/data/tasks_data/tasks_data.dart';
-import 'package:do_note/services/tasks_database_services.dart';
+import 'package:do_note/core/model/data/tasks_data/tasks_data.dart';
+import 'package:do_note/core/services/tasks_database_services.dart';
 
 final isarTasksProvider = Provider<Isar>((ref) {
   throw UnimplementedError();
